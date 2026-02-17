@@ -15,12 +15,14 @@ fi
 
 # Check for API keys in tracked files
 echo "Checking for API keys in tracked files..."
-if git grep -i "AIzaSy" -- ':(exclude).env' ':(exclude).env.example'; then
+GOOGLE_KEY_PATTERN="AIzaSy[A-Za-z0-9_-]{33}"
+if git grep -E "$GOOGLE_KEY_PATTERN" -- ':(exclude).env' ':(exclude).env.example' ':(exclude)scripts/'; then
     echo "❌ ERROR: Found Google API key in tracked files!"
     exit 1
 fi
 
-if git grep -E "sk-[A-Za-z0-9]{48}" -- ':(exclude).env' ':(exclude).env.example'; then
+GENERIC_KEY_PATTERN="sk-[A-Za-z0-9]{48}"
+if git grep -E "$GENERIC_KEY_PATTERN" -- ':(exclude).env' ':(exclude).env.example' ':(exclude)scripts/'; then
     echo "❌ ERROR: Found API key pattern in tracked files!"
     exit 1
 fi

@@ -1,72 +1,63 @@
-<!-- mcp-name: io.github.llmsresearch/paperbanana -->
-<table align="center" width="100%" style="border: none; border-collapse: collapse;">
-  <tr>
-    <td width="220" align="left" valign="middle" style="border: none;">
-      <img src="https://dwzhu-pku.github.io/PaperBanana/static/images/logo.jpg" alt="PaperBanana Logo" width="180"/>
-    </td>
-    <td align="left" valign="middle" style="border: none;">
-      <h1>PaperBanana</h1>
-      <p><strong>Automated Academic Illustration for AI Scientists</strong></p>
-      <p>
-        <a href="https://github.com/llmsresearch/paperbanana/actions/workflows/ci.yml"><img src="https://github.com/llmsresearch/paperbanana/actions/workflows/ci.yml/badge.svg" alt="CI"/></a>
-        <a href="https://pypi.org/project/paperbanana/"><img src="https://img.shields.io/pypi/dm/paperbanana?label=PyPI%20downloads&logo=pypi&logoColor=white" alt="PyPI Downloads"/></a>
-        <a href="https://huggingface.co/spaces/llmsresearch/paperbanana"><img src="https://img.shields.io/badge/Demo-HuggingFace-yellow?logo=huggingface&logoColor=white" alt="Demo"/></a>
-        <br/>
-        <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.10%2B-blue?logo=python&logoColor=white" alt="Python 3.10+"/></a>
-        <a href="https://arxiv.org/abs/2601.23265"><img src="https://img.shields.io/badge/arXiv-2601.23265-b31b1b?logo=arxiv&logoColor=white" alt="arXiv"/></a>
-        <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green?logo=opensourceinitiative&logoColor=white" alt="License: MIT"/></a>
-        <br/>
-        <a href="https://pydantic.dev"><img src="https://img.shields.io/badge/Pydantic-v2-e92063?logo=pydantic&logoColor=white" alt="Pydantic v2"/></a>
-        <a href="https://typer.tiangolo.com"><img src="https://img.shields.io/badge/CLI-Typer-009688?logo=gnubash&logoColor=white" alt="Typer"/></a>
-        <a href="https://ai.google.dev/"><img src="https://img.shields.io/badge/Gemini-Free%20Tier-4285F4?logo=google&logoColor=white" alt="Gemini Free Tier"/></a>
-      </p>
-    </td>
-  </tr>
-</table>
+<div align="center">
+
+# 🍌 PaperBanana
+
+**AI-Powered Academic Diagram Generation**
+
+Generate publication-quality methodology diagrams and statistical plots from text descriptions using multi-agent AI.
+
+[![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue?logo=python&logoColor=white)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green?logo=opensourceinitiative&logoColor=white)](LICENSE)
+[![arXiv](https://img.shields.io/badge/arXiv-2601.23265-b31b1b?logo=arxiv&logoColor=white)](https://arxiv.org/abs/2601.23265)
+
+[Features](#-features) • [Quick Start](#-quick-start) • [Documentation](#-documentation) • [Examples](#-examples)
+
+</div>
 
 ---
 
-> **Disclaimer**: This is an **unofficial, community-driven open-source implementation** of the paper
-> *"PaperBanana: Automating Academic Illustration for AI Scientists"* by Dawei Zhu, Rui Meng, Yale Song,
-> Xiyu Wei, Sujian Li, Tomas Pfister, and Jinsung Yoon ([arXiv:2601.23265](https://arxiv.org/abs/2601.23265)).
-> This project is **not affiliated with or endorsed by** the original authors or Google Research.
-> The implementation is based on the publicly available paper and may differ from the original system.
+## 📖 About
 
-An agentic framework for generating publication-quality academic diagrams and statistical plots from text descriptions. Uses Google Gemini for both VLM and image generation.
+PaperBanana is an open-source Python framework that automatically generates academic diagrams from text descriptions. It uses a multi-agent AI pipeline with Google Gemini to create publication-ready illustrations for research papers.
 
-- Two-phase multi-agent pipeline with iterative refinement
-- Gemini-based VLM planning and image generation
-- CLI, Python API, and MCP server for IDE integration
-- Claude Code skills for `/generate-diagram`, `/generate-plot`, and `/evaluate-diagram`
+> **Note**: This is an unofficial, community-driven implementation inspired by the paper ["PaperBanana: Automating Academic Illustration for AI Scientists"](https://arxiv.org/abs/2601.23265) (arXiv:2601.23265). This project is not affiliated with the original authors or Google Research.
 
 <p align="center">
-  <img src="assets/img/hero_image.png" alt="PaperBanana takes paper as input and provide diagram as output" style="max-width: 960px; width: 100%; height: auto;"/>
+  <img src="assets/img/hero_image.png" alt="PaperBanana workflow" width="800"/>
 </p>
 
----
+## ✨ Features
 
-## Quick Start
+- **🤖 Multi-Agent Pipeline**: 5 specialized AI agents work together to plan, design, and refine diagrams
+- **🎨 Two Diagram Types**:
+  - Methodology diagrams (architecture, workflows, frameworks)
+  - Statistical plots (charts, graphs, visualizations)
+- **🔄 Iterative Refinement**: Automatic quality improvement through critic feedback (up to 3 rounds)
+- **📚 Reference-Based Learning**: Uses 13 curated academic diagrams as examples
+- **🎯 Style Guidelines**: Follows NeurIPS publication standards
+- **🆓 Free to Use**: Powered by Google Gemini's free tier
+- **🛠️ Multiple Interfaces**: CLI, Python API, and MCP server for IDE integration
+
+## 🚀 Quick Start
 
 ### Prerequisites
 
-- Python 3.10+
-- A Google Gemini API key (available at no cost from [Google AI Studio](https://makersuite.google.com/app/apikey))
+- Python 3.10 or higher
+- A free Google Gemini API key ([Get one here](https://makersuite.google.com/app/apikey))
 
-### Step 1: Install
+### Installation
 
 ```bash
+# Install from PyPI
 pip install paperbanana
-```
 
-Or install from source for development:
-
-```bash
+# Or install from source
 git clone https://github.com/llmsresearch/paperbanana.git
 cd paperbanana
 pip install -e ".[dev,google]"
 ```
 
-### Step 2: Get Your API Key
+### Setup API Key
 
 Run the interactive setup wizard:
 
@@ -74,94 +65,62 @@ Run the interactive setup wizard:
 paperbanana setup
 ```
 
-This opens your browser to get a Google Gemini API key from [Google AI Studio](https://makersuite.google.com/app/apikey) and saves it to `.env`.
-
-Or set it up manually:
+Or configure manually:
 
 ```bash
+# Copy the example environment file
 cp .env.example .env
-# Edit .env and add: GOOGLE_API_KEY=your-key-here
+
+# Edit .env and add your API key
+# GOOGLE_API_KEY=your_api_key_here
 ```
 
-### Step 3: Generate a Diagram
+### Generate Your First Diagram
 
 ```bash
-# Using the included sample input
+# Generate a methodology diagram
 paperbanana generate \
   --input examples/sample_inputs/transformer_method.txt \
-  --caption "Overview of our encoder-decoder architecture with sparse routing"
+  --caption "Overview of our encoder-decoder architecture"
 ```
 
-Or write your own methodology text:
+Output will be saved to `outputs/run_<timestamp>/final_output.png`
 
-```bash
-cat > my_method.txt << 'EOF'
-Our framework consists of an encoder that processes input sequences
-through multi-head self-attention layers, followed by a decoder that
-generates output tokens auto-regressively using cross-attention to
-the encoder representations. We add a novel routing mechanism that
-selects relevant encoder states for each decoder step.
-EOF
+## 📚 Documentation
 
-paperbanana generate \
-  --input my_method.txt \
-  --caption "Overview of our encoder-decoder framework"
-```
+### How It Works
 
-Output is saved to `outputs/run_<timestamp>/final_output.png` along with all intermediate iterations and metadata.
+PaperBanana uses a two-phase pipeline with 5 AI agents:
 
----
+**Phase 1: Planning** (Linear)
+1. **Retriever** - Finds relevant reference diagrams from curated examples
+2. **Planner** - Creates detailed textual description of the target diagram
+3. **Stylist** - Refines the description with NeurIPS-style guidelines
 
-## How It Works
+**Phase 2: Generation** (Iterative, up to 3 rounds)
+4. **Visualizer** - Renders the description into an image
+5. **Critic** - Evaluates quality and provides revision feedback
 
-PaperBanana implements a two-phase multi-agent pipeline with 5 specialized agents:
+### CLI Commands
 
-**Phase 1 -- Linear Planning:**
-
-1. **Retriever** selects the most relevant reference examples from a curated set of 13 methodology diagrams spanning agent/reasoning, vision/perception, generative/learning, and science/applications domains
-2. **Planner** generates a detailed textual description of the target diagram via in-context learning from the retrieved examples
-3. **Stylist** refines the description for visual aesthetics using NeurIPS-style guidelines (color palette, layout, typography)
-
-**Phase 2 -- Iterative Refinement (3 rounds):**
-
-4. **Visualizer** renders the description into an image (Gemini 3 Pro for diagrams, Matplotlib code for plots)
-5. **Critic** evaluates the generated image against the source context and provides a revised description addressing any issues
-6. Steps 4-5 repeat for up to 3 iterations
-
-## Providers
-
-| Component | Provider | Model |
-|-----------|----------|-------|
-| VLM (planning, critique) | Google Gemini | `gemini-2.0-flash` |
-| Image Generation | Google Gemini | `gemini-3-pro-image-preview` |
-
----
-
-## CLI Reference
-
-### `paperbanana generate` -- Methodology Diagrams
+#### Generate Methodology Diagram
 
 ```bash
 paperbanana generate \
   --input method.txt \
-  --caption "Overview of our framework" \
+  --caption "Figure caption describing the diagram" \
   --output diagram.png \
   --iterations 3
 ```
 
-| Flag | Short | Description |
-|------|-------|-------------|
-| `--input` | `-i` | Path to methodology text file (required) |
-| `--caption` | `-c` | Figure caption / communicative intent (required) |
-| `--output` | `-o` | Output image path (default: auto-generated in `outputs/`) |
-| `--iterations` | `-n` | Number of Visualizer-Critic refinement rounds |
-| `--vlm-provider` | | VLM provider name (default: `gemini`) |
-| `--vlm-model` | | VLM model name (default: `gemini-2.0-flash`) |
-| `--image-provider` | | Image gen provider (default: `google_imagen`) |
-| `--image-model` | | Image gen model (default: `gemini-3-pro-image-preview`) |
-| `--config` | | Path to YAML config file (see `configs/config.yaml`) |
+**Options:**
+- `--input, -i`: Path to methodology text file (required)
+- `--caption, -c`: Figure caption/communicative intent (required)
+- `--output, -o`: Output image path (default: auto-generated)
+- `--iterations, -n`: Number of refinement rounds (default: 3)
+- `--config`: Custom YAML config file
 
-### `paperbanana plot` -- Statistical Plots
+#### Generate Statistical Plot
 
 ```bash
 paperbanana plot \
@@ -169,53 +128,32 @@ paperbanana plot \
   --intent "Bar chart comparing model accuracy across benchmarks"
 ```
 
-| Flag | Short | Description |
-|------|-------|-------------|
-| `--data` | `-d` | Path to data file, CSV or JSON (required) |
-| `--intent` | | Communicative intent for the plot (required) |
-| `--output` | `-o` | Output image path |
-| `--iterations` | `-n` | Refinement iterations (default: 3) |
+**Options:**
+- `--data, -d`: Path to CSV or JSON data file (required)
+- `--intent`: Description of desired plot (required)
+- `--output, -o`: Output image path
+- `--iterations, -n`: Refinement rounds (default: 3)
 
-### `paperbanana evaluate` -- Quality Assessment
-
-Comparative evaluation of a generated diagram against a human reference using VLM-as-a-Judge:
+#### Evaluate Diagram Quality
 
 ```bash
 paperbanana evaluate \
-  --generated diagram.png \
+  --generated my_diagram.png \
   --reference human_diagram.png \
   --context method.txt \
-  --caption "Overview of our framework"
+  --caption "Overview of framework"
 ```
 
-| Flag | Short | Description |
-|------|-------|-------------|
-| `--generated` | `-g` | Path to generated image (required) |
-| `--reference` | `-r` | Path to human reference image (required) |
-| `--context` | | Path to source context text file (required) |
-| `--caption` | `-c` | Figure caption (required) |
+Evaluates on 4 dimensions: Faithfulness, Readability, Conciseness, Aesthetics
 
-Scores on 4 dimensions (hierarchical aggregation per the paper):
-- **Primary**: Faithfulness, Readability
-- **Secondary**: Conciseness, Aesthetics
-
-### `paperbanana setup` -- First-Time Configuration
-
-```bash
-paperbanana setup
-```
-
-Interactive wizard that walks you through obtaining a Google Gemini API key and saving it to `.env`.
-
----
-
-## Python API
+### Python API
 
 ```python
 import asyncio
 from paperbanana import PaperBananaPipeline, GenerationInput, DiagramType
 from paperbanana.core.config import Settings
 
+# Configure the pipeline
 settings = Settings(
     vlm_provider="gemini",
     image_provider="google_imagen",
@@ -224,24 +162,23 @@ settings = Settings(
 
 pipeline = PaperBananaPipeline(settings=settings)
 
+# Generate a diagram
 result = asyncio.run(pipeline.generate(
     GenerationInput(
-        source_context="Our framework consists of...",
-        communicative_intent="Overview of the proposed method.",
+        source_context="Your methodology description here...",
+        communicative_intent="Overview of the proposed method",
         diagram_type=DiagramType.METHODOLOGY,
     )
 ))
 
-print(f"Output: {result.image_path}")
+print(f"Generated diagram: {result.image_path}")
 ```
 
-See `examples/generate_diagram.py` and `examples/generate_plot.py` for complete working examples.
+See `examples/` directory for more complete examples.
 
----
+### MCP Server (IDE Integration)
 
-## MCP Server
-
-PaperBanana includes an MCP server for use with Claude Code, Cursor, or any MCP-compatible client. Add the following config to use it via `uvx` without a local clone:
+Use PaperBanana directly in Claude Code, Cursor, or any MCP-compatible IDE:
 
 ```json
 {
@@ -249,35 +186,57 @@ PaperBanana includes an MCP server for use with Claude Code, Cursor, or any MCP-
     "paperbanana": {
       "command": "uvx",
       "args": ["--from", "paperbanana[mcp]", "paperbanana-mcp"],
-      "env": { "GOOGLE_API_KEY": "your-google-api-key" }
+      "env": { "GOOGLE_API_KEY": "your-api-key" }
     }
   }
 }
 ```
 
-Three MCP tools are exposed: `generate_diagram`, `generate_plot`, and `evaluate_diagram`.
+**Available tools:**
+- `generate_diagram` - Create methodology diagrams
+- `generate_plot` - Create statistical plots
+- `evaluate_diagram` - Evaluate diagram quality
 
-The repo also ships with 3 Claude Code skills:
-- `/generate-diagram <file> [caption]` - generate a methodology diagram from a text file
-- `/generate-plot <data-file> [intent]` - generate a statistical plot from CSV/JSON data
-- `/evaluate-diagram <generated> <reference>` - evaluate a diagram against a human reference
+See [`mcp_server/README.md`](mcp_server/README.md) for detailed setup instructions.
 
-See [`mcp_server/README.md`](mcp_server/README.md) for full setup details (Claude Code, Cursor, local development).
+## 💡 Examples
 
----
+### Example 1: Transformer Architecture
 
-## Configuration
-
-Default settings are in `configs/config.yaml`. Override via CLI flags or a custom YAML:
-
-```bash
-paperbanana generate \
-  --input method.txt \
-  --caption "Overview" \
-  --config my_config.yaml
+**Input text** (`method.txt`):
+```
+Our model uses a standard encoder-decoder architecture. The encoder
+processes input sequences through multi-head self-attention layers,
+followed by position-wise feed-forward networks. The decoder generates
+output tokens auto-regressively using masked self-attention and
+cross-attention to encoder representations.
 ```
 
-Key settings:
+**Command:**
+```bash
+paperbanana generate -i method.txt -c "Transformer architecture overview"
+```
+
+### Example 2: Experimental Results
+
+**Input data** (`results.csv`):
+```csv
+model,accuracy,f1_score
+Baseline,0.75,0.72
+Ours,0.89,0.87
+SOTA,0.85,0.83
+```
+
+**Command:**
+```bash
+paperbanana plot -d results.csv --intent "Bar chart comparing model performance"
+```
+
+More examples in the `examples/` directory.
+
+## ⚙️ Configuration
+
+Default settings are in `configs/config.yaml`. Override with custom YAML:
 
 ```yaml
 vlm:
@@ -293,46 +252,38 @@ pipeline:
   refinement_iterations: 3
   output_resolution: "2k"
 
-reference:
-  path: data/reference_sets
-
 output:
   dir: outputs
   save_iterations: true
   save_metadata: true
 ```
 
----
+Use with:
+```bash
+paperbanana generate -i method.txt -c "Caption" --config my_config.yaml
+```
 
-## Project Structure
+## 🏗️ Project Structure
 
 ```
 paperbanana/
-├── paperbanana/
-│   ├── core/          # Pipeline orchestration, types, config, utilities
-│   ├── agents/        # Retriever, Planner, Stylist, Visualizer, Critic
-│   ├── providers/     # VLM and image gen provider implementations
-│   │   ├── vlm/       # Gemini VLM provider
-│   │   └── image_gen/ # Gemini 3 Pro Image provider
-│   ├── reference/     # Reference set management (13 curated examples)
-│   ├── guidelines/    # Style guidelines loader
-│   └── evaluation/    # VLM-as-Judge evaluation system
-├── configs/           # YAML configuration files
-├── prompts/           # Prompt templates for all 5 agents + evaluation
-│   ├── diagram/       # retriever, planner, stylist, visualizer, critic
-│   ├── plot/          # plot-specific prompt variants
-│   └── evaluation/    # faithfulness, conciseness, readability, aesthetics
+├── paperbanana/          # Core package
+│   ├── agents/           # 5 AI agents (Retriever, Planner, Stylist, Visualizer, Critic)
+│   ├── core/             # Pipeline orchestration, config, types
+│   ├── providers/        # VLM and image generation providers
+│   ├── reference/        # Reference diagram management
+│   └── evaluation/       # Quality evaluation system
+├── configs/              # YAML configuration files
+├── prompts/              # Agent prompt templates
 ├── data/
-│   ├── reference_sets/  # 13 verified methodology diagrams
-│   └── guidelines/              # NeurIPS-style aesthetic guidelines
-├── examples/          # Working example scripts + sample inputs
-├── scripts/           # Data curation and build scripts
-├── tests/             # Test suite (34 tests)
-├── mcp_server/        # MCP server for IDE integration
-└── .claude/skills/    # Claude Code skills (generate-diagram, generate-plot, evaluate-diagram)
+│   ├── reference_sets/   # 13 curated methodology diagrams
+│   └── guidelines/       # NeurIPS style guidelines
+├── examples/             # Example scripts and sample inputs
+├── mcp_server/           # MCP server for IDE integration
+└── tests/                # Test suite
 ```
 
-## Development
+## 🔧 Development
 
 ```bash
 # Install with dev dependencies
@@ -341,14 +292,31 @@ pip install -e ".[dev,google]"
 # Run tests
 pytest tests/ -v
 
-# Lint
+# Run tests with coverage
+pytest tests/ --cov=paperbanana --cov-report=xml
+
+# Lint code
 ruff check paperbanana/ mcp_server/ tests/ scripts/
 
-# Format
+# Format code
 ruff format paperbanana/ mcp_server/ tests/ scripts/
 ```
 
-## Citation
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 📝 Citation
 
 This is an **unofficial** implementation. If you use this work, please cite the **original paper**:
 
@@ -364,13 +332,22 @@ This is an **unofficial** implementation. If you use this work, please cite the 
 
 **Original paper**: [https://arxiv.org/abs/2601.23265](https://arxiv.org/abs/2601.23265)
 
-## Disclaimer
+## ⚠️ Disclaimer
 
-This project is an independent open-source reimplementation based on the publicly available paper.
-It is not affiliated with, endorsed by, or connected to the original authors, Google Research, or
-Peking University in any way. The implementation may differ from the original system described in the paper.
-Use at your own discretion.
+This project is an independent open-source implementation based on the publicly available research paper. It is **not affiliated with, endorsed by, or connected to** the original authors, Google Research, or any associated institutions. The implementation may differ from the original system described in the paper.
 
-## License
+## 🙏 Acknowledgments
 
-MIT
+- Original PaperBanana paper authors for the innovative research
+- Google for providing free Gemini API access
+- The open-source community for various dependencies
+
+---
+
+<div align="center">
+
+Made with ❤️ by the open-source community
+
+[Report Bug](https://github.com/llmsresearch/paperbanana/issues) • [Request Feature](https://github.com/llmsresearch/paperbanana/issues)
+
+</div>
